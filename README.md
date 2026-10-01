@@ -29,7 +29,7 @@ Platform: `linux/amd64` only.
 The upstream distribution channels for this release are no longer available: the Docker Hub
 `minio/minio` repository was removed, `quay.io/minio/minio` no longer allows anonymous pulls, and
 `dl.min.io` no longer serves the binaries. The Insula processing
-[`helm-chart`](https://github.com/cgi-italy-insula-processing/helm-chart) deploys this version,
+[`helm-chart`](https://github.com/cgi-italy-insula-processing/helm-chart) deploys this version for tests and evaluation purposes,
 so we republish the original image unchanged.
 
 ## Provenance
@@ -50,6 +50,9 @@ against the official GitHub release
 | `/usr/bin/docker-entrypoint.sh`, `/licenses/LICENSE`, `/licenses/CREDITS` | byte-identical to the tag |
 
 ### Verify it yourself
+
+[`verify.sh`](verify.sh) runs every check below and exits non-zero on any mismatch. Override
+the image reference with `IMG=...`. The manual steps are:
 
 ```sh
 IMG=ghcr.io/cgi-italy-insula-processing/minio:RELEASE.2021-02-14T04-01-33Z
@@ -100,7 +103,9 @@ texts as `/licenses/LICENSE` and `/licenses/CREDITS`.
 The base layers are Red Hat Universal Base Image 8 Minimal and are covered by the
 [Red Hat UBI End User License Agreement](https://www.redhat.com/en/about/red-hat-end-user-license-agreements#UBI).
 
+CGI's redistribution review is recorded in [SIGN-OFF.md](SIGN-OFF.md).
+
 ## Support
 
 None. No fixes or updates will be published for this image. Upgrade to a maintained object store
-as soon as you can.
+as soon as you can. See [SECURITY.md](SECURITY.md).
